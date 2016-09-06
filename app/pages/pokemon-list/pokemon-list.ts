@@ -14,6 +14,7 @@ import { Loader } from '../loader/loader';
 export class PokemonListPage implements OnInit {
 
   private pokemonList: any[] = [];
+  private searchQuery: string = '';
 
   constructor(
     private navCtrl: NavController,
@@ -23,6 +24,19 @@ export class PokemonListPage implements OnInit {
   ngOnInit(){
     this.pokedexService.getAllPokemon()
       .subscribe(pokemonList => this.pokemonList = pokemonList);
+  }
+
+  getPokemons(){
+    var q = this.searchQuery;
+    if (q.trim() == '') {
+        return this.pokemonList;
+    }
+    return this.pokemonList.filter((v) => {
+        if (v.name.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
+            return true;
+        }
+        return false;
+    });
   }
 
 }

@@ -14,7 +14,7 @@
 
     <ion-list>
       <a ion-item
-       *ngFor="let pokemon of pokemonList ; let i = index"
+       *ngFor="let pokemon of getPokemons() ; let i = index"
        href="#"
        (click)="goToPokemonDetail(pokemon)">
        <ion-avatar item-left>
