@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Pokedex } from '../../providers/pokedex/pokedex';
+import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
+import { Capitalize } from '../../pipes/capitalize';
+import { Loader } from '../loader/loader';
 
-/*
-  Generated class for the PokemonListPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/pokemon-list/pokemon-list.html',
-  providers: [Pokedex]
+  providers: [ PokedexService ],
+  directives: [ Loader ],
+  pipes: [ Capitalize ]
 })
 export class PokemonListPage implements OnInit {
 
@@ -19,11 +17,11 @@ export class PokemonListPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private pokedex: Pokedex
+    private pokedexService: PokedexService
   ) {}
 
   ngOnInit(){
-    this.pokedex.getAllPokemon()
+    this.pokedexService.getAllPokemon()
       .subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 

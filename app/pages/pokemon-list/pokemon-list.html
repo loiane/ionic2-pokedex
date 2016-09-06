@@ -8,7 +8,24 @@
 </ion-header>
 
 <ion-content padding>
+  <loader *ngIf="!pokemonList.length" text="Loading Pokedex..."></loader>
   <div *ngIf="pokemonList.length">
-    sdfsdf
+    <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+
+    <ion-list>
+      <a ion-item
+       *ngFor="let pokemon of pokemonList ; let i = index"
+       href="#"
+       (click)="goToPokemonDetail(pokemon)">
+       <ion-avatar item-left>
+          <img
+            [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (i+1) + '.png'"
+          >
+        </ion-avatar>
+
+        <h2>{{ pokemon.name | capitalize }}</h2>
+
+      </a>
+    </ion-list>
   </div>
 </ion-content>
