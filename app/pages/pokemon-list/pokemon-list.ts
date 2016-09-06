@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
+import { Pokedex } from '../../providers/pokedex/pokedex';
 
 /*
   Generated class for the PokemonListPage page.
@@ -9,11 +11,20 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   templateUrl: 'build/pages/pokemon-list/pokemon-list.html',
+  providers: [Pokedex]
 })
-export class PokemonListPage {
+export class PokemonListPage implements OnInit {
 
-  constructor(private navCtrl: NavController) {
+  private pokemonList: any[] = [];
 
+  constructor(
+    private navCtrl: NavController,
+    private pokedex: Pokedex
+  ) {}
+
+  ngOnInit(){
+    this.pokedex.getAllPokemon()
+      .subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
 }
