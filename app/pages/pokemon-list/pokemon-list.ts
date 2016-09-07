@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Loader } from '../loader/loader';
 import { PokemonListItem } from '../pokemon-list-item/pokemon-list-item';
+import { PokemonDetailPage } from '../pokemon-detail/pokemon-detail';
 
 @Component({
   templateUrl: 'build/pages/pokemon-list/pokemon-list.html',
@@ -39,7 +40,9 @@ export class PokemonListPage implements OnInit {
   }
 
   goToPokemonDetail(event){
-    console.log(event);
+    this.navCtrl.push(PokemonDetailPage, {
+      pokemon: event.pokemon
+    });
   }
 
 }

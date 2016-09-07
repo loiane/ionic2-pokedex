@@ -1,19 +1,25 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the PokemonDetailPage page.
+import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
+import { Capitalize } from '../../pipes/capitalize';
+import { PokeNumber } from '../../pipes/pokeNumber';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/pokemon-detail/pokemon-detail.html',
+  providers: [ PokedexService ],
+  pipes: [ Capitalize, PokeNumber ]
 })
 export class PokemonDetailPage {
 
-  constructor(private navCtrl: NavController) {
+  private pokemon: any = {};
 
+  constructor(
+    private navParams: NavParams,
+    private navCtrl: NavController,
+    private pokedexService: PokedexService
+  ) {
+    this.pokemon = navParams.data.pokemon;
   }
 
 }

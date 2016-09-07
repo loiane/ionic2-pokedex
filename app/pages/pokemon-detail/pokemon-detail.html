@@ -1,18 +1,60 @@
-<!--
-  Generated template for the PokemonDetailPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>pokemon-detail</ion-title>
+    <ion-title>
+      <strong *ngIf="pokemon">{{ pokemon.name | capitalize }}</strong>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <div *ngIf="pokemon">
 
+    <ion-list inset>
+      <ion-item class="pokemon-header">
+        <h2><strong>{{ pokemon.name | capitalize }}</strong></h2>
+        <p>{{ pokemon.name }}</p>
+        <div item-right class="pokemon-number">
+          <strong>#{{ pokemon.order | pokeNumber }}</strong>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <img class="pokemon-image"
+         src="images/pokemons/{{ pokemon.name }}.jpg"
+         alt="{{ pokemon.name }}">
+
+    <br>
+
+    <div class="types">
+      <div *ngFor="let type of pokemon.types">
+        <h3 class="label {{ type.type.name | lowercase }}">
+        {{ type.type.name | capitalize }}
+        </h3>
+      </div>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-list-header>Pokédex data</ion-list-header>
+        <ion-item><strong>Species: </strong></ion-item>
+        <ion-item><strong>Height: </strong>{{ pokemon.height }}</ion-item>
+        <ion-item><strong>Weight: </strong>{{ pokemon.weight }}</ion-item>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-list-header>Training</ion-list-header>
+        <ion-item><strong>Species: </strong></ion-item>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-list>
+        <ion-list-header>Breeding</ion-list-header>
+        <ion-item><strong>Base EXP: </strong>{{ pokemon.base_experience }}</ion-item>
+      </ion-list>
+    </div>
+
+  </div>
 </ion-content>
