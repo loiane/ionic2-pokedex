@@ -1,0 +1,9 @@
+<div>
+  <ion-list>
+    <ion-list-header>Abilities</ion-list-header>
+    <ion-item *ngFor="let ability of getPokemonAbilities()">
+      {{ ability?.ability?.name | capitalize }}
+      <span *ngIf="ability.is_hidden">(Hidden Ability)</span>
+    </ion-item>
+  </ion-list>
+</div>
