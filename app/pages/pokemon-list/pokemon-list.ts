@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
-import { Loader } from '../loader/loader';
+import { Loader } from '../../components/loader/loader';
 import { PokemonListItem } from '../pokemon-list-item/pokemon-list-item';
 import { PokemonDetailPage } from '../pokemon-detail/pokemon-detail';
 
