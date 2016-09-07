@@ -36,6 +36,9 @@ export class PokemonListItem implements OnInit {
         }
       }
     }
+    if (types.length > 0){
+      this.pokemon.types = types;
+    }
     return types;
   }
 
