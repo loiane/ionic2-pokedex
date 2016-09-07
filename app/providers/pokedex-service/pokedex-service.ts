@@ -18,4 +18,9 @@ export class PokedexService {
       .map((res: Response) => res.json());
   }
 
+  getSpecies(url: string){
+    return this.http.get('data/v2/species.json')
+      .map((res: Response) => res.json());
+  }
+
 }
