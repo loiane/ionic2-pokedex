@@ -1,3 +1,140 @@
-.pokemon-list {
+.label {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 2px;
+  padding: 5px 5px 4px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  vertical-align: top;
+}
 
+.bug {
+  background-color: #a8b820;
+  border: solid 1px #6d7815;
+}
+.bug:hover {
+  background: #7e8a18;
+}
+.dark {
+  background-color: #705848;
+  border: solid 1px #49392f;
+}
+.dark:hover {
+  background: #544236;
+}
+.dragon {
+  background-color: #7038f8;
+  border: solid 1px #4924a1;
+}
+.dragon:hover {
+  background: #4608dc;
+}
+.electric {
+  background-color: #f8d030;
+  border: solid 1px #a1871f;
+}
+.electric:hover {
+  background: #d7ad07;
+}
+.fairy {
+  background-color: #ee99ac;
+  border: solid 1px #9b6470;
+}
+.fairy:hover {
+  background: #e04568;
+}
+.fighting {
+  background-color: #c03028;
+  border: solid 1px #7d1f1a;
+}
+.fighting:hover {
+  background: #90241e;
+}
+.fire {
+  background-color: #f08030;
+  border: solid 1px #9c531f;
+}
+.fire:hover {
+  background: #c95c0f;
+}
+.flying {
+  background-color: #a890f0;
+  border: solid 1px #6d5e9c;
+}
+.flying:hover {
+  background: #663be5;
+}
+.grass {
+  background-color: #78c850;
+  border: solid 1px #4e8234;
+}
+.grass:hover {
+  background: #57a032;
+}
+.ghost {
+  background-color: #705898;
+  border: solid 1px #493963;
+}
+.ghost:hover {
+  background: #544272;
+}
+.ground {
+  background-color: #e0c068;
+  border: solid 1px #927d44;
+}
+.ground:hover {
+  background: #cca12a;
+}
+.ice {
+  background-color: #98d8d8;
+  border: solid 1px #638d8d;
+}
+.ice:hover {
+  background: #55bfbf;
+}
+.normal {
+  background-color: #a8a878;
+  border: solid 1px #6d6d4e;
+}
+.normal:hover {
+  background: #838355;
+}
+.poison {
+  background-color: #c183c1;
+  border: solid 1px #a040a0;
+}
+.poison:hover {
+  background: #a251a2;
+}
+.psychic {
+  background-color: #f85888;
+  border: solid 1px #a13959;
+}
+.psychic:hover {
+  background: #f20a50;
+}
+.rock {
+  background-color: #b8a038;
+  border: solid 1px #786824;
+}
+.rock:hover {
+  background: #8a782a;
+}
+.steel {
+  background-color: #b8b8d0;
+  border: solid 1px #787887;
+}
+.steel:hover {
+  background: #7d7da9;
+}
+.water {
+  background-color: #6890f0;
+  border: solid 1px #445e9c;
+}
+.water:hover {
+  background: #1a56e8;
 }

@@ -9,7 +9,13 @@ export class PokedexService {
 
   getAllPokemon() {
     return this.http.get('data/v2/pokemon.json')
+    //this.http.get('http://pokeapi.co/api/v2/pokemon/?limit=20')
       .map((res: Response) => res.json().results);
+  }
+
+  getPokemon(url: string){
+    return this.http.get('data/v2/bulbasaur.json')
+      .map((res: Response) => res.json());
   }
 
 }

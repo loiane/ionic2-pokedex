@@ -13,19 +13,11 @@
     <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
 
     <ion-list>
-      <a ion-item
+      <pokemon-list-item
        *ngFor="let pokemon of getPokemons() ; let i = index"
-       href="#"
-       (click)="goToPokemonDetail(pokemon)">
-       <ion-avatar item-left>
-          <img
-            [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (i+1) + '.png'"
-          >
-        </ion-avatar>
-
-        <h2>{{ pokemon.name | capitalize }}</h2>
-
-      </a>
+       [num]="i+1" [pokemonItem]="pokemon"
+       (clicked)=goToPokemonDetail($event)>
+      </pokemon-list-item>
     </ion-list>
   </div>
 </ion-content>

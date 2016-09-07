@@ -1,18 +1,18 @@
-<!--
-  Generated template for the PokemonListItemPage page.
+<ion-item (click)="goToPokemonDetail()">
+ <ion-avatar item-left>
+   <img
+     [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (num) + '.png'"
+   >
+ </ion-avatar>
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+ <h2>{{ pokemonItem.name | capitalize }}</h2>
 
-  <ion-navbar>
-    <ion-title>pokemon-list-item</ion-title>
-  </ion-navbar>
+ <div *ngIf="getPokemonTypes().length !== 0" item-right>
+   <div item-right
+      *ngFor="let type of getPokemonTypes()"
+      class="label {{ type.type.name | lowercase }}">
+      {{ type.type.name }}
+   </div>
+ </div>
 
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+</ion-item>

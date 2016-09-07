@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
-import { Capitalize } from '../../pipes/capitalize';
 import { Loader } from '../loader/loader';
+import { PokemonListItem } from '../pokemon-list-item/pokemon-list-item';
 
 @Component({
   templateUrl: 'build/pages/pokemon-list/pokemon-list.html',
   providers: [ PokedexService ],
-  directives: [ Loader ],
-  pipes: [ Capitalize ]
+  directives: [ Loader, PokemonListItem ]
 })
 export class PokemonListPage implements OnInit {
 
@@ -37,6 +36,10 @@ export class PokemonListPage implements OnInit {
         }
         return false;
     });
+  }
+
+  goToPokemonDetail(event){
+    console.log(event);
   }
 
 }
