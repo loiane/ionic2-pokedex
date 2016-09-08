@@ -12,26 +12,7 @@
     <img class="pokemon-image"
          src="images/pokemons/{{ pokemon.name }}.jpg"
          alt="{{ pokemon.name }}">
-
     <br>
-
-    <ion-list inset>
-      <ion-item class="pokemon-header">
-        <h2><strong>{{ pokemon.name | capitalize }}</strong></h2>
-        <p>{{ pokemon.name }}</p>
-        <div item-right class="pokemon-number">
-          <strong>#{{ pokemon.order | pokeNumber }}</strong>
-        </div>
-      </ion-item>
-    </ion-list>
-
-    <div class="types">
-      <div *ngFor="let type of pokemon.types">
-        <h3 class="label {{ type.type.name | lowercase }}">
-        {{ type.type.name | capitalize }}
-        </h3>
-      </div>
-    </div>
 
     <!--div>
       <ion-list>
@@ -56,9 +37,13 @@
       </ion-list>
     </div-->
 
-    <pokemon-detail-stats [pokemon]="pokemon"></pokemon-detail-stats>
+    <pokemon-detail-species [pokemon]="pokemon"></pokemon-detail-species>
 
     <pokemon-detail-abilities [pokemon]="pokemon"></pokemon-detail-abilities>
+
+    <pokemon-detail-stats [pokemon]="pokemon"></pokemon-detail-stats>
+
+    <pokemon-detail-evolution [pokemon]="pokemon"></pokemon-detail-evolution>
 
     <pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
 

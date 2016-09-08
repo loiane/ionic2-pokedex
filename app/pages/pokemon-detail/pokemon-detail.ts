@@ -5,19 +5,23 @@ import { PokedexService } from '../../providers/pokedex-service/pokedex-service'
 import { Capitalize } from '../../pipes/capitalize';
 import { PokeNumber } from '../../pipes/pokeNumber';
 
+import { PokemonDetailSpecies } from '../../components/pokemon-detail-species/pokemon-detail-species';
 import { PokemonDetailSprites } from '../../components/pokemon-detail-sprites/pokemon-detail-sprites';
 import { PokemonDetailAbilities } from '../../components/pokemon-detail-abilities/pokemon-detail-abilities';
 import { PokemonDetailStats } from '../../components/pokemon-detail-stats/pokemon-detail-stats';
 import { PokemonDetailMoves } from '../../components/pokemon-detail-moves/pokemon-detail-moves';
+import { PokemonDetailEvolution } from '../../components/pokemon-detail-evolution/pokemon-detail-evolution';
 
 @Component({
   templateUrl: 'build/pages/pokemon-detail/pokemon-detail.html',
   providers: [ PokedexService ],
   pipes: [ Capitalize, PokeNumber ],
   directives: [
+    PokemonDetailSpecies,
     PokemonDetailSprites,
     PokemonDetailAbilities,
     PokemonDetailStats,
+    PokemonDetailEvolution,
     PokemonDetailMoves
   ]
 })

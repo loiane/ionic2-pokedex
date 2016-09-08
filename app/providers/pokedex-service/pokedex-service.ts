@@ -23,4 +23,14 @@ export class PokedexService {
       .map((res: Response) => res.json());
   }
 
+  getEggGroups(){
+    return this.http.get('data/v2/species.json')
+      .map((res: Response) => res.json().results);
+  }
+
+  getEvolutions(){
+    return this.http.get('data/v2/evolutions.json')
+      .map((res: Response) => res.json());
+  }
+
 }
