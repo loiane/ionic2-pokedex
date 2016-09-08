@@ -1,21 +1,13 @@
-<div>
-  <ion-list-header>Sprites</ion-list-header>
-  <ion-grid>
-    <ion-row>
-      <ion-col width-50 style="padding-left:30px;">
-        Normal
-      </ion-col>
-      <ion-col width-50 style="padding-left:30px;">
-        Shiny
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-40>
-        <img src="{{ pokemon.sprites.front_default }}">
-      </ion-col>
-      <ion-col width-40>
-        <img src="{{ pokemon.sprites.front_shiny }}">
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-list-header>Sprites</ion-list-header>
+
+<div class="container">
+  <div class="sprites">
+    <img src="{{ pokemon.sprites.front_default }}">
+    <div class="level"><center>Normal</center></div>
+  </div>
+
+  <div class="sprites">
+    <img src="{{ pokemon.sprites.front_shiny }}">
+    <div class="desc"><center>Shiny</center></div>
+  </div>
 </div>
