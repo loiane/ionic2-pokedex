@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Capitalize } from '../../pipes/capitalize';
@@ -9,21 +9,11 @@ import { Capitalize } from '../../pipes/capitalize';
   providers: [ PokedexService ],
   pipes: [ Capitalize ]
 })
-export class PokemonListItem implements OnInit {
+export class PokemonListItem {
 
-  @Input() pokemonItem: any;
+  @Input() pokemon: any;
   @Input() num: number;
   @Output() clicked: EventEmitter<any> = new EventEmitter();
-  pokemon: any;
-
-  constructor(
-    private pokedexService: PokedexService
-  ) {}
-
-  ngOnInit(){
-    this.pokedexService.getPokemon(this.pokemonItem.url)
-      .subscribe(pokemon => this.pokemon = pokemon);
-  }
 
   getPokemonTypes(){
     let types: any[] = [];

@@ -15,7 +15,7 @@
     <ion-list>
       <pokemon-list-item
        *ngFor="let pokemon of getPokemons() ; let i = index"
-       [num]="i+1" [pokemonItem]="pokemon"
+       [num]="i+1" [pokemon]="pokemon"
        (clicked)=goToPokemonDetail($event)>
       </pokemon-list-item>
     </ion-list>
