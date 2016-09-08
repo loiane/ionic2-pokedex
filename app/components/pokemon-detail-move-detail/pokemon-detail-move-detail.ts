@@ -9,6 +9,6 @@ export class PokemonDetailMoveDetail {
   @Input() list: any[];
 
   ngOnInit(){
-    console.log(this.list);
+    //console.log(this.list);
   }
 }
