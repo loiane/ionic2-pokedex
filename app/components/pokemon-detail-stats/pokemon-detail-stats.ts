@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { PokemonDetailStatsItem} from '../pokemon-detail-stats-item/pokemon-detail-stats-item';
+
 @Component({
   selector: 'pokemon-detail-stats',
-  templateUrl: 'build/components/pokemon-detail-stats/pokemon-detail-stats.html'
+  templateUrl: 'build/components/pokemon-detail-stats/pokemon-detail-stats.html',
+  directives: [ PokemonDetailStatsItem ] 
 })
 export class PokemonDetailStats implements OnInit {
 
