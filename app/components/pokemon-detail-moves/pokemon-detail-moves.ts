@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 
+import { includes } from 'lodash';
+
 import { PokemonDetailMoveDetail } from '../pokemon-detail-move-detail/pokemon-detail-move-detail';
 
 @Component({
@@ -25,56 +27,37 @@ export class PokemonDetailMoves {
     if (this.pokemon){
       let infoList = this.pokemon.moves;
       let item: any;
-      let type: any;
       for (let i=0; i<infoList.length; i++){
         item = infoList[i];
-        type = item.version_group_details[0];
-
         let list: any[] = item.version_group_details;
         let groupDetails;
-        //console.log(type.move_learn_method.name);
 
-        if (type.move_learn_method.name === 'egg'){
+        for (let i=0; i<list.length; i++){
+          groupDetails = list[i];
 
-          for (let i=0; i<list.length; i++){
-            groupDetails = list[i];
-            if (this.isGenerationIV(groupDetails) ||
-                this.isGenerationVI(groupDetails)){
-              this.egg.push(item);
-              break;
+          if (groupDetails.move_learn_method.name === 'egg'){
+
+            this.addIfGenerationIVorVI(groupDetails, item, this.egg);
+
+          } else if (groupDetails.move_learn_method.name === 'machine'){
+            this.tm.push(item);
+          } else if (groupDetails.move_learn_method.name === 'tutor'){
+
+            if (this.isGenerationVI(groupDetails)){
+              item.level_learned_at = groupDetails.level_learned_at;
+              this.addUnique(this.tutor, item);
             }
-          }
 
-        } else if (type.move_learn_method.name === 'machine'){
-          this.tm.push(item);
-        } else if (type.move_learn_method.name === 'tutor'){
+          } else if (groupDetails.move_learn_method.name === 'level-up'){
 
-          for (let i=0; i<list.length; i++){
-            groupDetails = list[i];
-            if (this.isGenerationIV(groupDetails) ||
-                this.isGenerationVI(groupDetails)){
-              this.tutor.push(item);
-              break;
-            }
-          }
+            //console.log(item.move.name + ' - ' + groupDetails.version_group.name + ' - ' + groupDetails.level_learned_at);
 
-        } else if (type.move_learn_method.name === 'level-up'){
-
-          let minLvl = 10000;
-
-          for (let i=0; i<list.length; i++){
-            groupDetails = list[i];
             if (this.isGenerationIV(groupDetails)){
-              minLvl = groupDetails.level_learned_at;
-              //console.log(item.move.name + ' ' + groupDetails.level_learned_at
-              //+ ' - ' + groupDetails.version_group.name);
-              break;
+              item.level_learned_at = groupDetails.level_learned_at;
+              this.addUnique(this.levelUp, item);
             }
           }
 
-          item.level_learned_at = minLvl;
-
-          this.levelUp.push(item);
         }
       }
 
@@ -99,6 +82,19 @@ export class PokemonDetailMoves {
       return true;;
     }
     return false;
+  }
+
+  addIfGenerationIVorVI(groupDetails, item, list){
+    if (this.isGenerationIV(groupDetails) ||
+        this.isGenerationVI(groupDetails)){
+      this.addUnique(list, item);
+    }
+  }
+
+  addUnique(list, item){
+    if (!includes(list, item)) {
+      list.push(item);
+    }
   }
 
   sortLevelUp(){
