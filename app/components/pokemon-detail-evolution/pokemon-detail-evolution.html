@@ -1,9 +1,13 @@
-<!--
-  Generated template for the PokemonDetailEvolution component.
+<ion-list-header>Evolves to:</ion-list-header>
 
-  See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
--->
-<div>
-  {{text}}
+<div class="container">
+  <div *ngFor="let evolution of getEvolutions()" class="evolution">
+    <img src="images/pokemons/{{ evolution.name }}.jpg"
+         alt="{{ evolution.name }}">
+    <div class="level">
+      <strong>{{ evolution.name | capitalize}}</strong>
+      (#{{ evolution.id | pokeNumber}})
+    </div>
+    <div class="level"><center>Level {{ evolution.level }}</center></div>
+  </div>
 </div>
