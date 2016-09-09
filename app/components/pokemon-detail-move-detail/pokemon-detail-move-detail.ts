@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 export class PokemonDetailMoveDetail {
 
   @Input() list: any[];
+  @Input() isEgg: boolean = false;
 
   ngOnInit(){
     //console.log(this.list);
