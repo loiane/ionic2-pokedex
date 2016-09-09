@@ -1,43 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
-import { Capitalize } from '../../pipes/capitalize';
-import { PokeNumber } from '../../pipes/pokeNumber';
+/*
+  Generated class for the PokemonDetailEvolution component.
 
+  See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+*/
 @Component({
   selector: 'pokemon-detail-evolution',
-  templateUrl: 'build/components/pokemon-detail-evolution/pokemon-detail-evolution.html',
-  providers: [ PokedexService ],
-  pipes: [ Capitalize, PokeNumber ]
+  templateUrl: 'build/components/pokemon-detail-evolution/pokemon-detail-evolution.html'
 })
-export class PokemonDetailEvolution implements OnInit {
+export class PokemonDetailEvolution {
 
-    @Input() pokemon: any;
-    evolutionDetails: any;
-    evolutions: any[] = [];
+  text: string;
 
-    constructor(private pokedexService: PokedexService) {}
-
-    ngOnInit(){
-      this.pokedexService.getEvolutions()
-        .subscribe(evolutionDetails => this.evolutionDetails = evolutionDetails);
-    }
-
-    getEvolutions(){
-      if (this.evolutionDetails && this.evolutionDetails.chain
-        && this.evolutions.length == 0){
-        let item = this.evolutionDetails.chain.evolves_to[0];
-        while (item){
-          let ev: any = {};
-          ev.name = item.species.name;
-          ev.id = item.species.url.replace("http://pokeapi.co/api/v2/pokemon-species/", "");
-          ev.id = ev.id.replace("/","");
-          ev.level = item.evolution_details[0].min_level;
-          this.evolutions.push(ev);
-          item = item.evolves_to[0];
-        }
-
-      }
-      return this.evolutions;
-    }
+  constructor() {
+    this.text = 'Hello World';
+  }
 }
