@@ -9,17 +9,10 @@
 <ion-content padding>
   <div *ngIf="pokemon">
 
-    <pokemon-detail-moves
-      [pokemon]="pokemon"
-      [moves]="moves">
-    </pokemon-detail-moves>
-
-
     <img class="pokemon-image"
          src="images/pokemons/{{ pokemon.name }}.jpg"
          alt="{{ pokemon.name }}">
     <br>
-
 
     <pokemon-detail-species [pokemon]="pokemon"></pokemon-detail-species>
 
@@ -31,5 +24,6 @@
 
     <pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
 
+    <pokemon-detail-moves [pokemon]="pokemon" [moves]="moves"></pokemon-detail-moves>
   </div>
 </ion-content>
