@@ -28,6 +28,7 @@ import { PokemonDetailEvolution } from '../../components/pokemon-detail-evolutio
 export class PokemonDetailPage {
 
   private pokemon: any = {};
+  private moves: any[];
 
   constructor(
     private navParams: NavParams,
@@ -35,6 +36,7 @@ export class PokemonDetailPage {
     private pokedexService: PokedexService
   ) {
     this.pokemon = navParams.data.pokemon;
+    this.moves = navParams.data.moves;
   }
 
 }
