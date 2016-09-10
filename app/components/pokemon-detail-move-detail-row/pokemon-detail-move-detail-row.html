@@ -1,0 +1,33 @@
+<ion-row *ngIf="moveDetails" center>
+
+<ion-col width-35>
+  {{ getName() }}
+
+  <span *ngIf="levelUp && move.groupDetails"
+    class="levelup-info">
+    <br>
+    Level {{ move.groupDetails.level_learned_at }}
+  </span>
+</ion-col>
+
+<ion-col width-20>
+    <p class="label {{ moveDetails.type.name | lowercase }}">
+      {{ moveDetails.type.name | capitalize }}
+    </p>
+</ion-col>
+
+<ion-col width-20>
+    <p class="label {{ moveDetails.damage_class.name  | lowercase }}">
+      {{ moveDetails.damage_class.name | capitalize }}
+    </p>
+</ion-col>
+
+<ion-col width-10>
+  {{ getPower() }}
+</ion-col>
+
+<!--ion-col width-10>
+  {{ getAccuracy() }}
+</ion-col-->
+
+</ion-row>
