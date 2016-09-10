@@ -33,4 +33,9 @@ export class PokedexService {
       .map((res: Response) => res.json());
   }
 
+  getTypes(){
+    return this.http.get('data/v2/types.json')
+      .map((res: Response) => res.json().results);
+  }
+
 }

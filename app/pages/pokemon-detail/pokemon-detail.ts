@@ -29,6 +29,7 @@ export class PokemonDetailPage {
 
   private pokemon: any = {};
   private moves: any[];
+  private types: any[] = [];
 
   constructor(
     private navParams: NavParams,
@@ -37,6 +38,7 @@ export class PokemonDetailPage {
   ) {
     this.pokemon = navParams.data.pokemon;
     this.moves = navParams.data.moves;
+    this.types = navParams.data.types;
   }
 
 }

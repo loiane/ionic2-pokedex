@@ -19,6 +19,7 @@ export class PokemonListPage implements OnInit {
   private searchQuery: string = '';
 
   private moves: any[] = [];
+  private types: any[] = [];
 
   constructor(
     private navCtrl: NavController,
@@ -29,6 +30,9 @@ export class PokemonListPage implements OnInit {
   ngOnInit(){
     this.pokedexService.getAllPokemon()
       .subscribe(pokemonList => this.pokemonList = pokemonList);
+
+    this.pokedexService.getTypes()
+      .subscribe(types => this.types = types);
 
     this.movesService.getMoves()
       .subscribe(moves => this.moves = moves);
@@ -50,7 +54,8 @@ export class PokemonListPage implements OnInit {
   goToPokemonDetail(event){
     this.navCtrl.push(PokemonDetailPage, {
       pokemon: event.pokemon,
-      moves: this.moves
+      moves: this.moves,
+      types: this.types
     });
   }
 
