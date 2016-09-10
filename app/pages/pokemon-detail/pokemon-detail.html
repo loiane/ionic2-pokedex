@@ -9,33 +9,17 @@
 <ion-content padding>
   <div *ngIf="pokemon">
 
+    <pokemon-detail-moves
+      [pokemon]="pokemon"
+      [moves]="moves">
+    </pokemon-detail-moves>
+
+
     <img class="pokemon-image"
          src="images/pokemons/{{ pokemon.name }}.jpg"
          alt="{{ pokemon.name }}">
     <br>
 
-    <!--div>
-      <ion-list>
-        <ion-item><strong>Species: </strong></ion-item>
-
-        <ion-item><strong>Type: </strong>
-          <span *ngFor="let type of pokemon.types" href="#"
-            class="label {{ type.type.name | lowercase }}">
-            {{ type.type.name | capitalize }}
-          </span>
-        </ion-item>
-
-        <ion-item><strong>Height: </strong>{{ pokemon.height }}</ion-item>
-        <ion-item><strong>Weight: </strong>{{ pokemon.weight }}</ion-item>
-      </ion-list>
-    </div>
-
-    <div>
-      <ion-list>
-        <ion-list-header>Breeding</ion-list-header>
-        <ion-item><strong>Base EXP: </strong>{{ pokemon.base_experience }}</ion-item>
-      </ion-list>
-    </div-->
 
     <pokemon-detail-species [pokemon]="pokemon"></pokemon-detail-species>
 
@@ -46,8 +30,6 @@
     <pokemon-detail-evolution [pokemon]="pokemon"></pokemon-detail-evolution>
 
     <pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
-
-    <pokemon-detail-moves [pokemon]="pokemon"></pokemon-detail-moves>
 
   </div>
 </ion-content>

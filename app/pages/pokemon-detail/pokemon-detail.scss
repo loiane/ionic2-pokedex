@@ -67,3 +67,9 @@
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
 }
+
+.col {
+  border: solid 1px grey;
+  border-bottom-style: none;
+  border-right-style: none;
+}
