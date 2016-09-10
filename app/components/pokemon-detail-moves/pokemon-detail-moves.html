@@ -10,17 +10,11 @@
         <ion-segment-button value="tm" [disabled]="!tm.length">
           TM / HM
         </ion-segment-button>
-        <ion-segment-button value="egg" [disabled]="!egg.length" isEgg="true">
+        <ion-segment-button value="egg" [disabled]="!egg.length">
           Breeding
         </ion-segment-button>
         <ion-segment-button value="tutor" [disabled]="!tutor.length">
           Tutor
-        </ion-segment-button>
-        <ion-segment-button value="transfer" [disabled]="!transfer.length">
-          Transfer
-        </ion-segment-button>
-        <ion-segment-button value="other" [disabled]="!other.length">
-          Other
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -28,20 +22,26 @@
     <div [ngSwitch]="move">
 
       <ion-list *ngSwitchCase="'levelUp'">
-        <pokemon-detail-move-detail [list]="levelUp"></pokemon-detail-move-detail>
+        <div *ngFor="let move of levelUp">
+          <pokemon-detail-move-detail [move]="move" [moves]="moves" levelUp="true">
+          </pokemon-detail-move-detail>
+        </div>
       </ion-list>
 
-      <ion-list *ngSwitchCase="'egg'">
-        <pokemon-detail-move-detail [list]="egg"></pokemon-detail-move-detail>
+      <!--ion-list *ngSwitchCase="'egg'">
+        <pokemon-detail-move-detail [list]="egg" [moves]="moves">
+        </pokemon-detail-move-detail>
       </ion-list>
 
       <ion-list *ngSwitchCase="'tm'">
-        <pokemon-detail-move-detail [list]="tm"></pokemon-detail-move-detail>
+        <pokemon-detail-move-detail [list]="tm" [moves]="moves">
+        </pokemon-detail-move-detail>
       </ion-list>
 
       <ion-list *ngSwitchCase="'tutor'">
-        <pokemon-detail-move-detail [list]="tutor"></pokemon-detail-move-detail>
-      </ion-list>
+        <pokemon-detail-move-detail [list]="tutor" [moves]="moves">
+        </pokemon-detail-move-detail>
+      </ion-list-->
 
     </div>
 </div>

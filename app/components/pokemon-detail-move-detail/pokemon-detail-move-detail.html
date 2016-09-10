@@ -1,8 +1,21 @@
-<ion-item *ngFor="let move of list">
+<div class="row" *ngIf="moveDetails">
 
-  <div item-left *ngIf="isEgg">
-    {{ move.level_learned_at }}
-  </div>
+<div class="col">
+{{ getName() }}
+</div>
 
-  {{ move.move.name }}
-</ion-item>
+<div class="col">
+<p *ngIf="levelUp && move.groupDetails">
+  Level {{ move.groupDetails.level_learned_at }}
+</p>
+
+</div>
+<div class="col">
+<div class="types" item-right >
+  <h3 class="label {{ moveDetails.type.name | lowercase }}">
+    {{ moveDetails.type.name }}
+  </h3>
+</div>
+</div>
+
+</div>

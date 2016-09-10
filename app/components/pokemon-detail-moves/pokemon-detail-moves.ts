@@ -12,16 +12,14 @@ import { PokemonDetailMoveDetail } from '../pokemon-detail-move-detail/pokemon-d
 export class PokemonDetailMoves {
 
   @Input() pokemon: any;
+  @Input() moves: any[];
 
   move: string = 'levelUp';
 
   levelUp: any[] = [];
   egg: any[] = [];
-  hm: any[] = [];
   tm: any[] = [];
   tutor: any[] = [];
-  transfer: any[] = [];
-  other: any[] = [];
 
   ngOnInit(){
     if (this.pokemon){
@@ -40,28 +38,33 @@ export class PokemonDetailMoves {
             this.addIfGenerationIVorVI(groupDetails, item, this.egg);
 
           } else if (groupDetails.move_learn_method.name === 'machine'){
-            this.tm.push(item);
+
+            //console.log(item);
+
+            this.addUnique(this.tm, item);
+
           } else if (groupDetails.move_learn_method.name === 'tutor'){
 
             if (this.isGenerationVI(groupDetails)){
-              item.level_learned_at = groupDetails.level_learned_at;
               this.addUnique(this.tutor, item);
             }
 
           } else if (groupDetails.move_learn_method.name === 'level-up'){
 
-            //console.log(item.move.name + ' - ' + groupDetails.version_group.name + ' - ' + groupDetails.level_learned_at);
 
             if (this.isGenerationIV(groupDetails)){
-              item.level_learned_at = groupDetails.level_learned_at;
+
+              item.groupDetails = groupDetails;
               this.addUnique(this.levelUp, item);
+
+              //console.log(item.move.name + ' - ' + groupDetails.version_group.name + ' - ' + groupDetails.level_learned_at);
             }
           }
-
         }
       }
 
       this.sortLevelUp();
+      this.sortAlphabetically(this.tm);
       this.sortAlphabetically(this.egg);
       this.sortAlphabetically(this.tutor);
     }
@@ -99,7 +102,7 @@ export class PokemonDetailMoves {
 
   sortLevelUp(){
     this.levelUp.sort(function(a, b){
-      return a.level_learned_at - b.level_learned_at;
+      return a.groupDetails.level_learned_at - b.groupDetails.level_learned_at;
     });
   }
 
