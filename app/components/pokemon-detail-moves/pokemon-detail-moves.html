@@ -1,7 +1,7 @@
 <div>
-  <ion-list>
-    <ion-list-header>Moves</ion-list-header>
-  </ion-list>
+  <ion-grid>
+    <ion-grid-header>Moves</ion-grid-header>
+  </ion-grid>
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="move">
         <ion-segment-button value="levelUp" [disabled]="!levelUp.length">
@@ -21,27 +21,34 @@
 
     <div [ngSwitch]="move">
 
-      <ion-list *ngSwitchCase="'levelUp'">
-        <div *ngFor="let move of levelUp">
-          <pokemon-detail-move-detail [move]="move" [moves]="moves" levelUp="true">
-          </pokemon-detail-move-detail>
-        </div>
-      </ion-list>
-
-      <!--ion-list *ngSwitchCase="'egg'">
-        <pokemon-detail-move-detail [list]="egg" [moves]="moves">
+      <ion-grid *ngSwitchCase="'levelUp'">
+        <pokemon-detail-move-detail
+          [list]="levelUp"
+          [moves]="moves"
+          levelUp="true">
         </pokemon-detail-move-detail>
-      </ion-list>
+      </ion-grid>
 
-      <ion-list *ngSwitchCase="'tm'">
-        <pokemon-detail-move-detail [list]="tm" [moves]="moves">
+      <ion-grid *ngSwitchCase="'egg'">
+        <pokemon-detail-move-detail
+          [list]="egg"
+          [moves]="moves">
         </pokemon-detail-move-detail>
-      </ion-list>
+      </ion-grid>
 
-      <ion-list *ngSwitchCase="'tutor'">
-        <pokemon-detail-move-detail [list]="tutor" [moves]="moves">
+      <ion-grid *ngSwitchCase="'tm'">
+        <pokemon-detail-move-detail
+          [list]="tm"
+          [moves]="moves">
         </pokemon-detail-move-detail>
-      </ion-list-->
+      </ion-grid>
+
+      <ion-grid *ngSwitchCase="'tutor'">
+        <pokemon-detail-move-detail
+          [list]="tutor"
+          [moves]="moves">
+        </pokemon-detail-move-detail>
+      </ion-grid>
 
     </div>
 </div>

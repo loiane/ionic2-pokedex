@@ -1,21 +1,15 @@
-<div class="row" *ngIf="moveDetails">
-
-<div class="col">
-{{ getName() }}
-</div>
-
-<div class="col">
-<p *ngIf="levelUp && move.groupDetails">
-  Level {{ move.groupDetails.level_learned_at }}
-</p>
-
-</div>
-<div class="col">
-<div class="types" item-right >
-  <h3 class="label {{ moveDetails.type.name | lowercase }}">
-    {{ moveDetails.type.name }}
-  </h3>
-</div>
-</div>
-
+<ion-row center style="background-color:#A7DB8D">
+  <ion-col width-35><strong>Move</strong></ion-col>
+  <ion-col width-20><strong>Type</strong></ion-col>
+  <ion-col width-20><strong>Cat</strong></ion-col>
+  <ion-col width-10><strong>Pow</strong></ion-col>
+  <!--ion-col width-10><strong>Acc</strong></ion-col-->
+</ion-row>
+<div *ngFor="let move of list">
+  <pokemon-detail-move-detail-row
+    [move]="move"
+    [moveDetails]="getMoveDetails(move)"
+    [levelUp]="levelUp"
+  >
+  </pokemon-detail-move-detail-row>
 </div>
