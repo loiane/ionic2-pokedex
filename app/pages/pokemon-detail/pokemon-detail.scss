@@ -23,6 +23,7 @@
 
 .types {
     display: flex;
+    flex-wrap: wrap;
 		padding-top: 10px;
     margin-bottom: 30px;
 		text-align: center;
@@ -30,6 +31,23 @@
       flex: 1;
       text-align: center;
       color: #777;
+    }
+}
+
+.type-effectiveness {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+		padding-top: 10px;
+    margin-bottom: 10px;
+		text-align: center;
+    div {
+      flex: 1;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
     }
 }
 
