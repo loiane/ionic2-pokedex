@@ -21,16 +21,21 @@
   {{ getDescription() }}
 </p>
 
-<ion-list>
+<ion-toolbar no-border-top>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="pokedex">
+      Pokédex
+    </ion-segment-button>
+    <ion-segment-button value="typeEffectiveness">
+      Type Effectiveness
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<div [ngSwitch]="tab">
+<ion-list *ngSwitchCase="'pokedex'">
 
   <ion-list-header>Pokédex, Training and Breeding</ion-list-header>
-
-  <!--ion-item><strong>Type: </strong>
-    <span *ngFor="let type of pokemon.types" href="#"
-      class="label {{ type.type.name | lowercase }}">
-      {{ type.type.name | capitalize }}
-    </span>
-  </ion-item-->
 
   <ion-item><strong>Height: </strong>{{ getHeight() }} m</ion-item>
   <ion-item><strong>Weight: </strong>{{ getWeight() }} kg</ion-item>
@@ -51,3 +56,7 @@
   </div>
 
 </ion-list>
+
+<pokemon-detail-type-effectiveness *ngSwitchCase="'typeEffectiveness'"
+  [pokemon]="pokemon" [types]="types">
+</pokemon-detail-type-effectiveness>

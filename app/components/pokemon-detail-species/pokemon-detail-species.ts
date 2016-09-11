@@ -3,17 +3,22 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Capitalize } from '../../pipes/capitalize';
 import { PokeNumber } from '../../pipes/pokeNumber';
+import { PokemonDetailTypeEffectiveness } from '../pokemon-detail-type-effectiveness/pokemon-detail-type-effectiveness';
 
 @Component({
   selector: 'pokemon-detail-species',
   templateUrl: 'build/components/pokemon-detail-species/pokemon-detail-species.html',
   providers: [ PokedexService ],
-  pipes: [ Capitalize, PokeNumber ]
+  pipes: [ Capitalize, PokeNumber ],
+  directives: [ PokemonDetailTypeEffectiveness ]
 })
 export class PokemonDetailSpecies implements OnInit {
 
   @Input() pokemon: any;
+  @Input() types: any;
   speciesDetails: any;
+
+  tab: string = 'pokedex';
 
   constructor(private pokedexService: PokedexService) {}
 
