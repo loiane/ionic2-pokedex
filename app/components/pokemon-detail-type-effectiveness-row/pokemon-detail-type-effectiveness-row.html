@@ -1,0 +1,13 @@
+<ion-label><strong>{{ text }}</strong></ion-label>
+<div class="type-effectiveness">
+  <div *ngFor="let type of list">
+    <p class="label {{ type.name | lowercase }}">
+      {{ type.name | capitalize }}
+    </p>
+  </div>
+  <div *ngIf="list.length === 0">
+    <p class="label none">
+      None
+    </p>
+  </div>
+</div>
