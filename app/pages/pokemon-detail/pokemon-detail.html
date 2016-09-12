@@ -1,7 +1,11 @@
 <ion-header>
   <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       <strong *ngIf="pokemon">{{ pokemon.name | capitalize }}</strong>
+      (#{{ pokemon.order | pokeNumber }})
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,12 +13,17 @@
 <ion-content padding>
   <div *ngIf="pokemon">
 
-    <img class="pokemon-image"
-         src="images/pokemons/{{ pokemon.name }}.jpg"
-         alt="{{ pokemon.name }}">
-    <br>
+    <div class="pokemon-image-container">
+      <a class="arrow arrow-left" role="button" (click)="goToPreviousPokemon()"></a>
+      <img class="pokemon-image"
+           src="images/pokemons/{{ pokemon.name }}.jpg"
+           alt="{{ pokemon.name }}">
+      <a class="arrow arrow-right" role="button" (click)="goToNextPokemon()"></a>
+    </div>
 
-    <pokemon-detail-species [pokemon]="pokemon" [types]="types"></pokemon-detail-species>
+      <br>
+
+    <pokemon-detail-species [pokemon]="pokemon"></pokemon-detail-species>
 
     <pokemon-detail-abilities [pokemon]="pokemon"></pokemon-detail-abilities>
 
@@ -22,8 +31,8 @@
 
     <pokemon-detail-evolution [pokemon]="pokemon"></pokemon-detail-evolution>
 
-    <pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
+    <!--pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
 
-    <pokemon-detail-moves [pokemon]="pokemon" [moves]="moves"></pokemon-detail-moves>
+    <pokemon-detail-moves [pokemon]="pokemon" [moves]="moves"></pokemon-detail-moves-->
   </div>
 </ion-content>
