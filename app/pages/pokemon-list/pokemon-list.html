@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       <img src="images/pokeball.png" alt="" style="width: 18px;height: 18px;vertical-align: middle;" />
       <strong>Ionic 2 Pokedex</strong>
@@ -14,7 +17,7 @@
 
     <ion-list>
       <pokemon-list-item
-       *ngFor="let pokemon of getPokemons() ; let i = index"
+       *ngFor="let pokemon of getPokemons(); let i = index"
        [num]="i+1" [pokemon]="pokemon"
        (clicked)=goToPokemonDetail($event)>
       </pokemon-list-item>
