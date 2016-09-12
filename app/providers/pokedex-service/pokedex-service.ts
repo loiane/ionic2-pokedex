@@ -1,41 +1,89 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
+
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Rx';
+
+import { Pokemon } from '../../models/pokemon';
 
 @Injectable()
 export class PokedexService {
 
-  constructor(private http: Http) {}
+  private pokemons: Array<Pokemon>;
+  private pokemonSpecies: any[];
+  private pokemonEvolutions: any[];
+  private pokemonTypes: any[];
+
+  private baseUrl: string;
+
+  constructor(private http: Http) {
+    this.baseUrl = 'data/v2/';
+  }
 
   getAllPokemon() {
-    return this.http.get('data/v2/pokemon.json')
-    //this.http.get('http://pokeapi.co/api/v2/pokemon/?limit=20')
-      .map((res: Response) => res.json().results);
+    if (this.pokemons) {
+      return Observable.of(this.pokemons);
+    } else {
+      return this.http.get(this.baseUrl  + 'pokemon.json')
+              .map((res: Response) => res.json().results)
+              .do((data) => { this.pokemons = data; })
+              .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
   }
 
-  getPokemon(url: string){
-    return this.http.get('data/v2/bulbasaur.json')
-      .map((res: Response) => res.json());
+  getPokemon(id: number){
+    return this.getAllPokemon()
+      .map((res: Response) => res[id-1]);
   }
 
-  getSpecies(url: string){
-    return this.http.get('data/v2/species.json')
-      .map((res: Response) => res.json());
+  getAllSpecies(){
+    if (this.pokemonSpecies) {
+      return Observable.of(this.pokemonSpecies);
+    } else {
+      return this.http.get(this.baseUrl  + 'pokemon-species.json')
+              .map((res: Response) => res.json().results)
+              .do((data) => { this.pokemonSpecies = data; });
+    }
   }
 
-  getEggGroups(){
-    return this.http.get('data/v2/species.json')
-      .map((res: Response) => res.json().results);
+  getSpecies(id: number){
+    return this.getAllSpecies()
+      .map((res: Response) => res[id-1]);
   }
 
   getEvolutions(){
-    return this.http.get('data/v2/evolutions.json')
-      .map((res: Response) => res.json());
+    if (this.pokemonEvolutions) {
+      return Observable.of(this.pokemonEvolutions);
+    } else {
+      return this.http.get(this.baseUrl  + 'evolutions.json')
+              .map((res: Response) => res.json())
+              .do((data) => { this.pokemonEvolutions = data; });
+    }
+  }
+
+  getEvolution(id: number){
+    return this.getEvolutions()
+      .map((res: Response) => res[id-1]);
   }
 
   getTypes(){
-    return this.http.get('data/v2/types.json')
-      .map((res: Response) => res.json().results);
+    if (this.pokemonTypes) {
+      return Observable.of(this.pokemonTypes);
+    } else {
+      return this.http.get(this.baseUrl  + 'types.json')
+              .map((res: Response) => res.json().results)
+              .do((data) => { this.pokemonTypes = data; });
+    }
+  }
+
+  getType(id: number){
+    return this.getTypes().map((res: Response) => res[id-1]);
+  }
+
+  doMultipleRequests(observableBatch: any[]){
+    return Observable.forkJoin(observableBatch);
   }
 
 }
