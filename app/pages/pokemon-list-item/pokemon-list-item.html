@@ -10,7 +10,8 @@
  <div *ngIf="getPokemonTypes().length !== 0" item-right>
    <div item-right
       *ngFor="let type of getPokemonTypes()"
-      class="label {{ type.type.name | lowercase }}">
+      class="label {{ type.type.name | lowercase }}"
+      style="font-size:12px;">
       {{ type.type.name | capitalize }}
    </div>
  </div>
