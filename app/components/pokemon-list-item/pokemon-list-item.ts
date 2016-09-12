@@ -5,7 +5,7 @@ import { Capitalize } from '../../pipes/capitalize';
 
 @Component({
   selector: 'pokemon-list-item',
-  templateUrl: 'build/pages/pokemon-list-item/pokemon-list-item.html',
+  templateUrl: 'build/components/pokemon-list-item/pokemon-list-item.html',
   providers: [ PokedexService ],
   pipes: [ Capitalize ]
 })
