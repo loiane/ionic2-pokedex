@@ -1,18 +1,23 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
 
+import {SideMenuPage} from './pages/side-menu/side-menu';
+
+import { PokedexService } from './providers/pokedex-service/pokedex-service';
+import { MovesService } from './providers/moves-service/moves-service';
+import { Utilities } from './util/utilities';
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  providers: [ PokedexService, MovesService, Utilities ]
 })
 export class MyApp {
 
   private rootPage: any;
 
   constructor(private platform: Platform) {
-    this.rootPage = TabsPage;
+    this.rootPage = SideMenuPage;
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
