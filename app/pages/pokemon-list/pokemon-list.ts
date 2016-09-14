@@ -5,21 +5,17 @@ import { PokedexService } from '../../providers/pokedex-service/pokedex-service'
 import { MovesService } from '../../providers/moves-service/moves-service';
 
 import { Loader } from '../../components/loader/loader';
-import { PokemonListItem } from '../pokemon-list-item/pokemon-list-item';
+import { PokemonListItem } from '../../components/pokemon-list-item/pokemon-list-item';
 import { PokemonDetailPage } from '../pokemon-detail/pokemon-detail';
 
 @Component({
   templateUrl: 'build/pages/pokemon-list/pokemon-list.html',
-  providers: [ PokedexService, MovesService ],
   directives: [ Loader, PokemonListItem ]
 })
 export class PokemonListPage implements OnInit {
 
   private pokemonList: any[] = [];
   private searchQuery: string = '';
-
-  private moves: any[] = [];
-  private types: any[] = [];
 
   constructor(
     private navCtrl: NavController,
@@ -29,13 +25,10 @@ export class PokemonListPage implements OnInit {
 
   ngOnInit(){
     this.pokedexService.getAllPokemon()
-      .subscribe(pokemonList => this.pokemonList = pokemonList);
-
-    this.pokedexService.getTypes()
-      .subscribe(types => this.types = types);
-
-    this.movesService.getMoves()
-      .subscribe(moves => this.moves = moves);
+      .subscribe(pokemonList => {
+        this.pokemonList = pokemonList;
+        this.pokedexService.initData();
+      });
   }
 
   getPokemons(){
@@ -53,9 +46,7 @@ export class PokemonListPage implements OnInit {
 
   goToPokemonDetail(event){
     this.navCtrl.push(PokemonDetailPage, {
-      pokemon: event.pokemon,
-      moves: this.moves,
-      types: this.types
+      pokemon: event.pokemon
     });
   }
 
