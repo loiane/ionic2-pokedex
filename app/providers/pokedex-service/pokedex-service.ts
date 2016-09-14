@@ -16,10 +16,21 @@ export class PokedexService {
   private pokemonEvolutions: any[];
   private pokemonTypes: any[];
 
+  private moves: any[];
+
   private baseUrl: string;
 
   constructor(private http: Http) {
     this.baseUrl = 'data/v2/';
+  }
+
+  initData(){
+    let requestArray = [];
+    requestArray.push(this.getAllSpecies());
+    requestArray.push(this.getTypes());
+    requestArray.push(this.getMoves());
+    this.doMultipleRequests(requestArray)
+      .subscribe(data => null);
   }
 
   getAllPokemon() {
@@ -58,7 +69,7 @@ export class PokedexService {
       return Observable.of(this.pokemonEvolutions);
     } else {
       return this.http.get(this.baseUrl  + 'evolutions.json')
-              .map((res: Response) => res.json())
+              .map((res: Response) => res.json().results)
               .do((data) => { this.pokemonEvolutions = data; });
     }
   }
@@ -84,6 +95,20 @@ export class PokedexService {
 
   doMultipleRequests(observableBatch: any[]){
     return Observable.forkJoin(observableBatch);
+  }
+
+  getMoves(){
+    if (this.moves) {
+      return Observable.of(this.moves);
+    } else {
+      return this.http.get(this.baseUrl  + 'moves.json')
+              .map((res: Response) => res.json().results)
+              .do((data) => { this.moves = data; });
+    }
+  }
+
+  getMove(id: number){
+    return this.getMoves().map((res: Response) => res[id-1]);
   }
 
 }
