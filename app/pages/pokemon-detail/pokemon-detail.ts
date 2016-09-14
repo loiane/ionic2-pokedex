@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Capitalize } from '../../pipes/capitalize';
 import { PokeNumber } from '../../pipes/pokeNumber';
-
+import { Utilities } from '../../util/utilities';
 import { PokemonDetailSpecies } from '../../components/pokemon-detail-species/pokemon-detail-species';
 import { PokemonDetailSprites } from '../../components/pokemon-detail-sprites/pokemon-detail-sprites';
 import { PokemonDetailAbilities } from '../../components/pokemon-detail-abilities/pokemon-detail-abilities';
@@ -14,7 +14,6 @@ import { PokemonDetailMoves } from '../../components/pokemon-detail-moves/pokemo
 
 @Component({
   templateUrl: 'build/pages/pokemon-detail/pokemon-detail.html',
-  providers: [ PokedexService ],
   pipes: [ Capitalize, PokeNumber ],
   directives: [
     PokemonDetailSpecies,
@@ -25,20 +24,47 @@ import { PokemonDetailMoves } from '../../components/pokemon-detail-moves/pokemo
     PokemonDetailMoves
   ]
 })
-export class PokemonDetailPage {
+export class PokemonDetailPage implements OnInit {
 
   private pokemon: any = {};
-  private moves: any[];
-  private types: any[] = [];
+
+  private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/';
 
   constructor(
     private navParams: NavParams,
     private navCtrl: NavController,
     private pokedexService: PokedexService
-  ) {
-    this.pokemon = navParams.data.pokemon;
-    this.moves = navParams.data.moves;
-    this.types = navParams.data.types;
+  ) {  }
+
+  ngOnInit() {
+    this.pokemon = this.navParams.data.pokemon;
+  }
+
+  getId(){
+    return this.pokemon.id;
+  }
+
+  goToPreviousPokemon(){
+    //console.log('currentId = ' + this.getId());
+    if (this.getId() >= 2){
+      let newId = this.getId() - 1;
+      //console.log('newid = ' + newId);
+      this.changePokemonData(newId);
+    }
+  }
+
+  goToNextPokemon(){
+    //console.log('currentId = ' + this.getId());
+    if (this.getId() < 151){
+      let newId = this.getId() + 1;
+      //console.log('newid = ' + newId);
+      this.changePokemonData(newId);
+    }
+  }
+
+  private changePokemonData(id: number){
+    this.pokedexService.getPokemon(id)
+      .subscribe(data => this.pokemon = data);
   }
 
 }
