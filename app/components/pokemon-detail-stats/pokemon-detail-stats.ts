@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { PokemonDetailStatsItem} from '../pokemon-detail-stats-item/pokemon-detail-stats-item';
 
 @Component({
   selector: 'pokemon-detail-stats',
   templateUrl: 'build/components/pokemon-detail-stats/pokemon-detail-stats.html',
-  directives: [ PokemonDetailStatsItem ] 
+  directives: [ PokemonDetailStatsItem ]
 })
-export class PokemonDetailStats implements OnInit {
+export class PokemonDetailStats implements OnChanges {
 
   @Input() pokemon: any;
 
@@ -19,7 +19,7 @@ export class PokemonDetailStats implements OnInit {
   spe: any;
   total: number;
 
-  ngOnInit(){
+  ngOnChanges(){
     if (this.pokemon){
       let infoList = this.pokemon.stats;
       let item: any;
