@@ -20,4 +20,12 @@ export class Utilities {
     }
     return false;
   }
+
+  getTranslatedName(list){
+    for (let i=0; i<list.length; i++){
+      if (list[i].language.name === 'en'){
+        return list[i].flavor_text;
+      }
+    }
+  }
 }
