@@ -1,3 +1,6 @@
+$pokemon-number-backoung-color: #FF6666;
+$pokemon-number-border: red;
+
 .pokemon-header {
   border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -5,10 +8,10 @@
 }
 
 .pokemon-number {
-  background: #FF6666;
-  border: 1px solid red;
+  background: $pokemon-number-backoung-color;
+  border: 1px solid $pokemon-number-border;
   border-radius: 5px;
-  color: white;
+  color: $label-color;
   display: inline-block;
   padding: 5px 10px;
   vertical-align: top;
@@ -17,6 +20,7 @@
 .pokemon-image {
   padding-top: 15px;
   width: 180px;
+  height: 190px;
   margin: 0px auto;
   display: block;
 }
@@ -25,26 +29,30 @@
   position: relative;
   width: 100%;
   max-width: 980px;
-  //border:1px solid red;
 }
+
+$arrow-color: #000;
+$arrow-border-size: 15px solid;
+$arrow-border-bottom-top: $arrow-border-size transparent;
+$arrow-border: $arrow-border-size $arrow-color;
 
 .arrow {
   width: 0;
   height: 0;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+  border-top: $arrow-border-bottom-top;
+  border-bottom: $arrow-border-bottom-top;
   position: absolute;
 }
 
 .arrow-right {
   margin-top: -105px;
-  border-left: 15px solid #000;
+  border-left: $arrow-border;
   right: 0;
 }
 
 .arrow-left {
-  margin-top: 70px;
-  border-right: 15px solid #000;
+  margin-top: 87px;
+  border-right: $arrow-border;
   left: 0;
 }
 
@@ -76,8 +84,7 @@
     -webkit-flex-flex-direction: row;
     -webkit-box-flex-flex-direction: row;
 
-    justify-content: flex-start;
-		padding-top: 10px;
+    padding-top: 10px;
     margin-bottom: 10px;
 		text-align: center;
     div {
