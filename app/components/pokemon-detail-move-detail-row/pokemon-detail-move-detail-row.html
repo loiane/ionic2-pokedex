@@ -10,21 +10,21 @@
   </span>
 </ion-col>
 
-<ion-col width-20>
-    <p class="label {{ moveDetails.type.name | lowercase }}">
+<ion-col width-25 class="levelup-header-tc">
+    <p class="label-fixed-width {{ moveDetails.type.name | lowercase }}">
       {{ moveDetails.type.name | capitalize }}
     </p>
 </ion-col>
 
-<ion-col width-20>
-    <p class="label {{ moveDetails.damage_class.name  | lowercase }}">
+<ion-col width-25 class="levelup-header-tc">
+    <p class="label-fixed-width {{ moveDetails.damage_class.name  | lowercase }}">
       {{ moveDetails.damage_class.name | capitalize }}
     </p>
 </ion-col>
 
-<ion-col width-10>
+<!--ion-col width-10>
   {{ getPower() }}
-</ion-col>
+</ion-col-->
 
 <!--ion-col width-10>
   {{ getAccuracy() }}

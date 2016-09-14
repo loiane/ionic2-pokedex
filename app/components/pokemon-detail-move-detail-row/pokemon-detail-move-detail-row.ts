@@ -1,17 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Capitalize } from '../../pipes/capitalize';
+import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
+import { Utilities } from '../../util/utilities';
 
 @Component({
   selector: 'pokemon-detail-move-detail-row',
   templateUrl: 'build/components/pokemon-detail-move-detail-row/pokemon-detail-move-detail-row.html',
   pipes: [ Capitalize]
 })
-export class PokemonDetailMoveDetailRow {
+export class PokemonDetailMoveDetailRow implements OnInit {
 
   @Input() move: any;
-  @Input() moveDetails: any;
   @Input() levelUp: boolean = false;
+  moveDetails: any;
+
+  constructor(
+    private pokedexService: PokedexService,
+    private util: Utilities
+  ) {}
+
+  ngOnInit(){
+    let id: number = this.util.retrieveIdFromUrl(this.move.move.url, 'move');
+    this.pokedexService.getMove(id)
+      .subscribe(moveDetails => this.moveDetails = moveDetails);
+  }
 
   getName(){
     if (this.moveDetails){
