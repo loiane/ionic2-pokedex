@@ -9,16 +9,7 @@ import { PokemonDetailMoveDetailRow } from '../pokemon-detail-move-detail-row/po
 })
 export class PokemonDetailMoveDetail {
 
+  @Input() pokemon: any;
   @Input() list: any[];
-  @Input() moves: any[];
   @Input() levelUp: boolean = false;
-
-  getMoveDetails(move){
-    let id = move.move.url;
-    id = id.replace("http://pokeapi.co/api/v2/move/", "");
-    id = id.replace("/","");
-    id--;
-    return this.moves[id];
-    //console.log(this.moveDetails);
-  }
 }
