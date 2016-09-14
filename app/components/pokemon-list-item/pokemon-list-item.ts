@@ -15,6 +15,8 @@ export class PokemonListItem {
   @Input() num: number;
   @Output() clicked: EventEmitter<any> = new EventEmitter();
 
+  private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
   getPokemonTypes(){
     let types: any[] = [];
     if (this.pokemon && this.pokemon.types) {
