@@ -5,7 +5,6 @@
     </button>
     <ion-title>
       <strong *ngIf="pokemon">{{ pokemon.name | capitalize }}</strong>
-      (#{{ pokemon.order | pokeNumber }})
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +15,7 @@
     <div class="pokemon-image-container">
       <a class="arrow arrow-left" role="button" (click)="goToPreviousPokemon()"></a>
       <img class="pokemon-image"
-           src="images/pokemons/{{ pokemon.name }}.jpg"
+           src="{{ imgBaseUrl }}{{ pokemon.id }}.png"
            alt="{{ pokemon.name }}">
       <a class="arrow arrow-right" role="button" (click)="goToNextPokemon()"></a>
     </div>
@@ -31,8 +30,8 @@
 
     <pokemon-detail-evolution [pokemon]="pokemon"></pokemon-detail-evolution>
 
-    <!--pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
+    <pokemon-detail-sprites [pokemon]="pokemon"></pokemon-detail-sprites>
 
-    <pokemon-detail-moves [pokemon]="pokemon" [moves]="moves"></pokemon-detail-moves-->
+    <pokemon-detail-moves [pokemon]="pokemon"></pokemon-detail-moves>
   </div>
 </ion-content>
