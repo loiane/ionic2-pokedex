@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { includes } from 'lodash';
 
@@ -9,10 +9,9 @@ import { PokemonDetailMoveDetail } from '../pokemon-detail-move-detail/pokemon-d
   templateUrl: 'build/components/pokemon-detail-moves/pokemon-detail-moves.html',
   directives: [ PokemonDetailMoveDetail ]
 })
-export class PokemonDetailMoves {
+export class PokemonDetailMoves implements OnChanges {
 
   @Input() pokemon: any;
-  @Input() moves: any[];
 
   move: string = 'levelUp';
 
@@ -21,8 +20,13 @@ export class PokemonDetailMoves {
   tm: any[] = [];
   tutor: any[] = [];
 
-  ngOnInit(){
+  ngOnChanges(){
     if (this.pokemon){
+      this.levelUp = [];
+      this.egg = [];
+      this.tm = [];
+      this.tutor = [];
+
       let infoList = this.pokemon.moves;
       let item: any;
       for (let i=0; i<infoList.length; i++){
