@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { includes } from 'lodash';
 
+import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
+import { Utilities } from '../../util/utilities';
 import { PokemonDetailTypeEffectivenessRow } from '../pokemon-detail-type-effectiveness-row/pokemon-detail-type-effectiveness-row';
 
 @Component({
@@ -12,7 +14,6 @@ import { PokemonDetailTypeEffectivenessRow } from '../pokemon-detail-type-effect
 export class PokemonDetailTypeEffectiveness implements OnInit {
 
   @Input() pokemon: any;
-  @Input() types: any;
 
   private typesDetails: any[] = [];
 
@@ -23,17 +24,24 @@ export class PokemonDetailTypeEffectiveness implements OnInit {
   private noDamageFrom: any[] = [];
   private noDamageTo: any[] = [];
 
+  constructor(
+    private pokedexService: PokedexService,
+    private util: Utilities
+  ) {}
+
   ngOnInit(){
-    let pokemonTypes: any[] = [];
+    let observableBatch = [];
 
     for (let i=0; i<this.pokemon.types.length; i++){
-      let id = this.pokemon.types[i].type.url;
-      id = id.replace("http://pokeapi.co/api/v2/type/", "");
-      id = id.replace("/","");
-      id--;
-      this.typesDetails.push(this.types[id]);
+      let id = this.util.retrieveIdFromUrl(this.pokemon.types[i].type.url, 'type');
+      observableBatch.push(this.pokedexService.getType(id));
     }
-    this.retrieveTypeEffectiveness();
+
+    this.pokedexService.doMultipleRequests(observableBatch)
+      .subscribe((t: any[]) => {
+         t.forEach((result) => this.typesDetails.push(result));
+         this.retrieveTypeEffectiveness();
+       })
   }
 
   retrieveTypeEffectiveness() {
@@ -53,18 +61,9 @@ export class PokemonDetailTypeEffectiveness implements OnInit {
   retrieveInfo(listToIterate, listToAdd){
     for (let i=0; i<listToIterate.length; i++){
       let item = listToIterate[i];
-      if (!this.contains(listToAdd, item)) {
+      if (!this.util.containsByName(listToAdd, item)) {
         listToAdd.push(item);
       }
     }
-  }
-
-  contains(list, item){
-    for (var i = 0; i < list.length; i++) {
-        if (list[i].name === item.name) {
-            return true;
-        }
-    }
-    return false;
   }
 }
