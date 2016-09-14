@@ -1,7 +1,7 @@
 <ion-label><strong>{{ text }}</strong></ion-label>
 <div class="type-effectiveness">
   <div *ngFor="let type of list">
-    <p class="label {{ type.name | lowercase }}">
+    <p class="label-fixed-width {{ type.name | lowercase }}">
       {{ type.name | capitalize }}
     </p>
   </div>
