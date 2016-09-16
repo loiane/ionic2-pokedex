@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
-import { MovesService } from '../../providers/moves-service/moves-service';
 
 import { Loader } from '../../components/loader/loader';
 import { PokemonListItem } from '../../components/pokemon-list-item/pokemon-list-item';
@@ -19,8 +18,7 @@ export class PokemonListPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private pokedexService: PokedexService,
-    private movesService: MovesService
+    private pokedexService: PokedexService
   ) {}
 
   ngOnInit(){
