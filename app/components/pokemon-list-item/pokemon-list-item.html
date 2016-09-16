@@ -1,7 +1,7 @@
 <ion-item (click)="goToPokemonDetail()">
  <ion-avatar item-left>
    <img
-     [src]="imgBaseUrl + (num) + '.png'"
+     src="{{ pokemon.id | pokemonAvatar }}"
    >
  </ion-avatar>
 

@@ -2,20 +2,20 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Capitalize } from '../../pipes/capitalize';
+import { PokemonAvatar } from '../../pipes/pokemon-avatar';
+
 
 @Component({
   selector: 'pokemon-list-item',
   templateUrl: 'build/components/pokemon-list-item/pokemon-list-item.html',
   providers: [ PokedexService ],
-  pipes: [ Capitalize ]
+  pipes: [ Capitalize, PokemonAvatar ]
 })
 export class PokemonListItem {
 
   @Input() pokemon: any;
   @Input() num: number;
   @Output() clicked: EventEmitter<any> = new EventEmitter();
-
-  private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
   getPokemonTypes(){
     let types: any[] = [];
