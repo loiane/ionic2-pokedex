@@ -3,7 +3,7 @@
 <div class="container">
   <div *ngFor="let evolution of evolutions"
       class="evolution {{ pokemon.types[0]?.type.name }}-evolution">
-    <img src="{{ imgBaseUrl }}{{ evolution.id }}.png"
+    <img src="{{ evolution.id | pokemonImage}}"
          alt="{{ evolution.name }}">
     <div class="level">
       <strong>{{ evolution.name | capitalize}}</strong>

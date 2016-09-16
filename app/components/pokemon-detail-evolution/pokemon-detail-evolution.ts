@@ -4,19 +4,18 @@ import { PokedexService } from '../../providers/pokedex-service/pokedex-service'
 import { Utilities } from '../../util/utilities';
 import { Capitalize } from '../../pipes/capitalize';
 import { PokeNumber } from '../../pipes/pokeNumber';
+import { PokemonImage } from '../../pipes/pokemon-image';
 
 @Component({
   selector: 'pokemon-detail-evolution',
   templateUrl: 'build/components/pokemon-detail-evolution/pokemon-detail-evolution.html',
-  pipes: [ Capitalize, PokeNumber ]
+  pipes: [ Capitalize, PokeNumber, PokemonImage ]
 })
 export class PokemonDetailEvolution implements OnChanges {
 
     @Input() pokemon: any;
     evolutionDetails: any;
     evolutions: any[] = [];
-
-    private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/';
 
     constructor(
       private pokedexService: PokedexService,

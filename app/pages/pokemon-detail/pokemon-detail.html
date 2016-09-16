@@ -15,7 +15,7 @@
     <div class="pokemon-image-container">
       <a class="arrow arrow-left" role="button" (click)="goToPreviousPokemon()"></a>
       <img class="pokemon-image"
-           src="{{ imgBaseUrl }}{{ pokemon.id }}.png"
+           src="{{ pokemon.id | pokemonImage}}"
            alt="{{ pokemon.name }}">
       <a class="arrow arrow-right" role="button" (click)="goToNextPokemon()"></a>
     </div>

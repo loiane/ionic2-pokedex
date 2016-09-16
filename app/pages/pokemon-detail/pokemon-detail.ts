@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PokedexService } from '../../providers/pokedex-service/pokedex-service';
 import { Capitalize } from '../../pipes/capitalize';
 import { PokeNumber } from '../../pipes/pokeNumber';
+import { PokemonImage } from '../../pipes/pokemon-image';
 import { Utilities } from '../../util/utilities';
 import { PokemonDetailSpecies } from '../../components/pokemon-detail-species/pokemon-detail-species';
 import { PokemonDetailSprites } from '../../components/pokemon-detail-sprites/pokemon-detail-sprites';
@@ -14,7 +15,7 @@ import { PokemonDetailMoves } from '../../components/pokemon-detail-moves/pokemo
 
 @Component({
   templateUrl: 'build/pages/pokemon-detail/pokemon-detail.html',
-  pipes: [ Capitalize, PokeNumber ],
+  pipes: [ Capitalize, PokeNumber, PokemonImage ],
   directives: [
     PokemonDetailSpecies,
     PokemonDetailSprites,
@@ -27,8 +28,6 @@ import { PokemonDetailMoves } from '../../components/pokemon-detail-moves/pokemo
 export class PokemonDetailPage implements OnInit {
 
   private pokemon: any = {};
-
-  private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/';
 
   constructor(
     private navParams: NavParams,
