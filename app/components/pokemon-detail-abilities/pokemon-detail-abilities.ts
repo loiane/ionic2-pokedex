@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 import { Capitalize } from '../../pipes/capitalize';
+import { Utilities } from '../../util/utilities';
+import { AbilityDetailPage } from '../../pages/ability-detail/ability-detail';
 
 @Component({
   selector: 'pokemon-detail-abilities',
@@ -10,6 +13,11 @@ import { Capitalize } from '../../pipes/capitalize';
 export class PokemonDetailAbilities {
 
   @Input() pokemon: any;
+
+  constructor(
+    private navCtrl: NavController,
+    private util: Utilities
+  ) {}
 
   getPokemonAbilities(){
     let list: any[] = [];
@@ -27,5 +35,12 @@ export class PokemonDetailAbilities {
       this.pokemon.abilities = list;
     }
     return list;
+  }
+
+  goToDetail(ability){
+    let id: number = this.util.retrieveIdFromUrl(ability.ability.url, 'ability');
+    this.navCtrl.push(AbilityDetailPage, {
+      id: id
+    });
   }
 }
