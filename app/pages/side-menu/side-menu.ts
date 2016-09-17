@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
 
-import {PokemonListPage} from '../pokemon-list/pokemon-list';
-import {AboutPage} from '../about/about';
+import { AboutPage } from '../about/about';
+import { PokemonListPage } from '../pokemon-list/pokemon-list';
+import { TypeListPage } from '../type-list/type-list';
 
 @Component({
   templateUrl: 'build/pages/side-menu/side-menu.html'
@@ -18,6 +19,7 @@ export class SideMenuPage {
   constructor(private navCtrl: NavController) {
     this.pages = [
       { title: 'Pokedéx', component: PokemonListPage },
+      { title: 'Pokémon Types', component: TypeListPage },
       { title: 'About', component: AboutPage }
     ];
   }
