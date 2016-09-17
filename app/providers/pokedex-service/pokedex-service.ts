@@ -15,6 +15,7 @@ export class PokedexService {
   private pokemonSpecies: any[];
   private pokemonEvolutions: any[];
   private pokemonTypes: any[];
+  private pokemonAbilities: any[];
 
   private moves: any[];
 
@@ -29,6 +30,7 @@ export class PokedexService {
     requestArray.push(this.getAllSpecies());
     requestArray.push(this.getTypes());
     requestArray.push(this.getMoves());
+    requestArray.push(this.getAbilities());
     this.doMultipleRequests(requestArray)
       .subscribe(data => null);
   }
@@ -109,6 +111,20 @@ export class PokedexService {
 
   getMove(id: number){
     return this.getMoves().map((res: Response) => res[id-1]);
+  }
+
+  getAbilities(){
+    if (this.pokemonAbilities) {
+      return Observable.of(this.pokemonAbilities);
+    } else {
+      return this.http.get(this.baseUrl  + 'abilities.json')
+              .map((res: Response) => res.json().results)
+              .do((data) => { this.pokemonAbilities = data; });
+    }
+  }
+
+  getAbility(id: number){
+    return this.getAbilities().map((res: Response) => res[id-1]);
   }
 
 }
