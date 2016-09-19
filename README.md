@@ -8,6 +8,8 @@ Pokédex sample hybrid mobile app developed with Ionic 2, Angular 2 and Apache C
 * Navigation between Pokémons (use of Angular/Ionic lifecycle events to change and refresh data)
 * To be added: list of Pokémons types + details, list of abilities + details, list of moves + details
 
+<img src="https://github.com/loiane/ionic2-pokedex/blob/master/ionic2-pokedex.gif" width="250" height="450" />
+
 ### Install
 
 You can run this app in the browser by following the steps below:
