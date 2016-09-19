@@ -2,6 +2,12 @@
 
 Pokédex sample hybrid mobile app developed with Ionic 2, Angular 2 and Apache Cordova. Using Pokéapi v2 as source for data and sprites.
 
+### Functionalities
+* List of Pokémons with species details, type effectiveness, abilities, evolution chain, sprites and moves (IV Generation)
+* Using Ionic 2 routing and CSS components, Angular 2 Components, Directives, Pipes, RxJS Observables
+* Navigation between Pokémons (use of Angular/Ionic lifecycle events to change and refresh data)
+* To be added: list of Pokémons types + details, list of abilities + details, list of moves + details
+
 ### Install
 
 You can run this app in the browser by following the steps below:
