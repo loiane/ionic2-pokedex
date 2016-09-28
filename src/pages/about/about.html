@@ -1,11 +1,46 @@
 <ion-header>
   <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       About
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="about">
+
+    <ion-card>
+      <ion-card-header ion-wrap>
+        We are open source!
+      </ion-card-header>
+      <ion-card-content>
+        <p>Want to collaborate or check this app source code?</p>
+        <p>This app was developed for educational purposes using free and open-source tecnologies.<p>
+        <p>Source code is available on <a href="https://github.com/loiane/ionic2-pokedex">Github</a>.<p>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Credit
+    </ion-card-header>
+    <ion-card-content>
+      <p>This app uses data and sprites provided by <a href="http://pokeapi.co/">Pokéapi v2</a>.</p>
+      <p>Some Pokémon images used in this app are from <a href="http://bulbapedia.bulbagarden.net/">Bulbapedia</a>.<p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Disclaimers
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Pokémon © 2002-2016 Pokémon. © 1995-2016 Nintendo/Creatures Inc./GAME FREAK inc. TM, ® and Pokémon character names are trademarks of Nintendo.</strong></p>
+      <p>This app uses data and sprites from the Pokémon series of video games.</p>
+      <p>No copyright or trademark infringement is intended in using Pokémon content on this app developed for a fan reference.<p>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

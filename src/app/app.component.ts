@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import { TabsPage } from '../pages/tabs/tabs';
-
+import { SideMenuPage } from '../pages/side-menu/side-menu';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = TabsPage;
+  rootPage = SideMenuPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
