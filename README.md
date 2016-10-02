@@ -15,7 +15,7 @@ Pokédex sample hybrid mobile app developed with Ionic 2, Angular 2 and Apache C
 You can run this app in the browser by following the steps below:
 
 ```bash
-$ npm install -g ionic@alpha
+$ npm install -g ionic@latest
 $ npm install
 $ ionic serve
 ```
