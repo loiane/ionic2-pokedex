@@ -1,0 +1,16 @@
+<ion-label><strong>{{ text }}</strong></ion-label>
+<ion-grid>
+    <ion-row wrap>
+      <ion-col width-33 *ngFor="let type of list">
+        <span class="label-fixed-width {{ type.name | lowercase }}"
+          style="font-size:12px;">
+          {{ type.name | capitalize }}
+        </span>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+<div *ngIf="list.length === 0">
+  <p class="label none">
+    None
+  </p>
+</div>

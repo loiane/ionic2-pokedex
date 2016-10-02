@@ -1,0 +1,14 @@
+<ion-list-header>Evolves to:</ion-list-header>
+
+<div class="container">
+  <div *ngFor="let evolution of evolutions"
+      class="evolution {{ pokemon.types[0]?.type.name }}-evolution">
+    <img src="{{ evolution.id | pokemonImage}}"
+         alt="{{ evolution.name }}">
+    <div class="level">
+      <strong>{{ evolution.name | capitalize}}</strong>
+      (#{{ evolution.id | pokeNumber}})
+    </div>
+    <div class="level">Level {{ evolution.level }}</div>
+  </div>
+</div>

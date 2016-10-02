@@ -1,0 +1,8 @@
+<ion-item>
+  <strong item-left>{{ text }}</strong>
+  <span item-right>{{ value }}</span>
+  <div *ngIf="classValue !== ''"
+    item-left
+    [style.width]="(value-30) +'%'"
+    class="progress {{ classValue }}"></div>
+</ion-item>

@@ -1,0 +1,41 @@
+<div>
+  <ion-list>
+    <ion-list-header>Base Stats</ion-list-header>
+
+    <pokemon-detail-stats-item
+      text="HP:&nbsp;&nbsp;" [value]="hp.base_stat"
+      classValue="hp"
+    ></pokemon-detail-stats-item>
+
+    <pokemon-detail-stats-item
+      text="ATK:" [value]="atk.base_stat"
+      classValue="atk"
+    ></pokemon-detail-stats-item>
+
+    <pokemon-detail-stats-item
+      text="DEF:" [value]="def.base_stat"
+      classValue="def"
+    ></pokemon-detail-stats-item>
+
+    <pokemon-detail-stats-item
+      text="SPA:" [value]="spa.base_stat"
+      classValue="spa"
+    ></pokemon-detail-stats-item>
+
+    <pokemon-detail-stats-item
+      text="SPD:" [value]="spd.base_stat"
+      classValue="spd"
+    ></pokemon-detail-stats-item>
+
+    <pokemon-detail-stats-item
+      text="SPE:" [value]="spe.base_stat"
+      classValue="spe"
+    ></pokemon-detail-stats-item>
+
+    <ion-item>
+      <strong item-left>TOTAL:</strong>
+      <span item-right><strong>{{ total }}</strong></span>
+    </ion-item>
+
+  </ion-list>
+</div>
