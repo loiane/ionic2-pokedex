@@ -7,7 +7,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class PokemonListItem {
 
   @Input() pokemon: any;
-  @Input() num: number;
   @Output() clicked: EventEmitter<any> = new EventEmitter();
 
   getPokemonTypes(){
