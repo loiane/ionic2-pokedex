@@ -1,27 +1,33 @@
 <ion-header>
-  <ion-navbar>
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      <img src="../../assets/images/pokeball.png" alt=""
-        style="width: 18px;height: 18px;vertical-align: middle;" />
-      <strong>Ionic 2 Pokedex</strong>
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <img src="../../assets/images/pokeball.png" alt=""
+                 style="width: 18px;height: 18px;vertical-align: middle;"/>
+            <strong>Ionic 2 Pokedex</strong>
+        </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <ion-searchbar color="primary"
+                       [(ngModel)]="searchQuery"
+                       placeholder="Search"
+        ></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <loader *ngIf="!pokemonList.length" text="Loading Pokedex..."></loader>
-  <div *ngIf="pokemonList.length">
-    <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+<ion-content>
+    <loader *ngIf="!pokemonList.length" text="Loading Pokedex..."></loader>
+    <div *ngIf="pokemonList.length">
 
-    <ion-list>
-      <pokemon-list-item
-       *ngFor="let pokemon of getPokemons(); let i = index"
-       [num]="i+1" [pokemon]="pokemon"
-       (clicked)=goToPokemonDetail($event)>
-      </pokemon-list-item>
-    </ion-list>
-  </div>
+        <ion-list>
+            <pokemon-list-item
+                    *ngFor="let pokemon of getPokemons(); let i = index"
+                    [num]="i+1" [pokemon]="pokemon"
+                    (clicked)=goToPokemonDetail($event)>
+            </pokemon-list-item>
+        </ion-list>
+    </div>
 </ion-content>
