@@ -1,0 +1,179 @@
+$pokemon-type-list: (
+  bug: (
+    background-color: #a8b820,
+    border: #6d7815,
+    background: #7e8a18
+  ),
+  dark: (
+    background-color: #705848,
+    border: #49392f,
+    background: #544236
+  ),
+  dragon: (
+    background-color: #7038f8,
+    border: #4924a1,
+    background: #4608dc
+  ),
+  electric: (
+    background-color: #f8d030,
+    border: #a1871f,
+    background: #d7ad07
+  ),
+  fairy: (
+    background-color: #ee99ac,
+    border: #9b6470,
+    background: #e04568
+  ),
+  fighting: (
+    background-color: #c03028,
+    border: #7d1f1a,
+    background: #90241e
+  ),
+  fire: (
+    background-color: #f08030,
+    border: #9c531f,
+    background: #c95c0f
+  ),
+  flying: (
+    background-color: #a890f0,
+    border: #6d5e9c,
+    background: #663be5
+  ),
+  grass: (
+    background-color: #78c850,
+    border: #4e8234,
+    background: #57a032
+  ),
+  ghost: (
+    background-color: #705898,
+    border: #493963,
+    background: #544272
+  ),
+  ground: (
+    background-color: #e0c068,
+    border: #927d44,
+    background: #cca12a
+  ),
+  ice: (
+    background-color: #98d8d8,
+    border: #638d8d,
+    background: #55bfbf
+  ),
+  normal: (
+    background-color: #a8a878,
+    border: #6d6d4e,
+    background: #838355
+  ),
+  poison: (
+    background-color: #c183c1,
+    border: #a040a0,
+    background: #a251a2
+  ),
+  psychic: (
+    background-color: #f85888,
+    border: #a13959,
+    background: #f20a50
+  ),
+  rock: (
+    background-color: #b8a038,
+    border: #786824,
+    background: #8a782a
+  ),
+  steel: (
+    background-color: #b8b8d0,
+    border: #787887,
+    background: #7d7da9
+  ),
+  water: (
+    background-color: #6890f0,
+    border: #445e9c,
+    background: #1a56e8
+  )
+);
+
+$label-color: #FFFFFF;
+
+$pokemon-move-list: (
+  physical: (
+    background-color: #C92112,
+    border: #82150b,
+    background: #D96358,
+    color: #F67A1A
+  ),
+  special: (
+    background-color: #4F5870,
+    border: #333948,
+    background: #83899A
+  ),
+  status: (
+    background-color: #8C888C,
+    border: #5b585b,
+    background: #8C888C
+  ),
+  none: (
+    background-color: #000000,
+    border: #000000,
+    background: #000000
+  )
+);
+
+.label {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: $label-color;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 2px;
+  padding: 5px 5px 4px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  vertical-align: top;
+  text-align: center;
+}
+
+.label-fixed-width {
+  @extend .label;
+  width: 68px;
+}
+
+//generates pokemon type css
+@each $label, $map in $pokemon-type-list {
+  .#{$label} {
+    background-color: map-get($map, background-color);
+    border: solid 1px  map-get($map, border);
+  }
+  .#{$label}:hover {
+    background: map-get($map, background);
+  }
+
+  //for pokemon evolution DIV background
+  .#{$label}-evolution {
+    background: lighten(map-get($map, background-color), 15%);
+    border: solid 1px  map-get($map, background-color);
+
+    img {
+      border: solid 1px  map-get($map, background-color);
+    }
+  }
+
+  //for segment text colors
+  .#{$label}-segment {
+    color: map-get($map, border);
+    border-color: map-get($map, background) !important;
+  }
+}
+
+//generates pokemon move css
+@each $label, $map in $pokemon-move-list {
+  .#{$label} {
+    background-color: map-get($map, background-color);
+    border: solid 1px  map-get($map, border);
+    @if map-get($map, border) {
+      color: map-get($map, color);
+    }
+  }
+  .#{$label}:hover {
+    background: map-get($map, background);
+  }
+}
