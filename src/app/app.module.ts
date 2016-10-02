@@ -1,40 +1,23 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IonicApp, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { SideMenuPage } from '../pages/side-menu/side-menu';
-import { PokemonList } from '../pages/pokemon-list/pokemon-list';
-import { PokedexService } from '../providers/pokedex-service';
-import { PipesModule } from '../pipes/pipes.module';
-import { Loader } from '../components/loader/loader';
-import { PokemonListItem } from '../components/pokemon-list-item/pokemon-list-item';
-import { PokemonDetail } from '../pages/pokemon-detail/pokemon-detail';
-import { TypeList } from '../pages/type-list/type-list';
+import { PagesModule, APP_PAGES } from '../pages/pages.module';
 
 @NgModule({
   declarations: [
-    MyApp,
-    SideMenuPage,
-    PokemonList,
-    AboutPage,
-    Loader,
-    PokemonListItem,
-    PokemonDetail,
-    TypeList
+    MyApp
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    PipesModule
+    CommonModule,
+    PagesModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SideMenuPage,
-    PokemonList,
-    AboutPage,
-    TypeList
-  ],
-  providers: [PokedexService]
+    APP_PAGES
+  ]
 })
 export class AppModule {}
