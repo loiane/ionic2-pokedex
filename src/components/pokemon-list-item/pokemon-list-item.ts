@@ -1,9 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { PokedexService } from '../../providers/pokedex-service';
-import { Capitalize } from '../../pipes/capitalize';
-import { PokemonAvatar } from '../../pipes/pokemon-avatar';
-
 @Component({
   selector: 'pokemon-list-item',
   templateUrl: 'pokemon-list-item.html'
