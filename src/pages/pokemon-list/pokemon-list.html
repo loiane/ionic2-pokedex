@@ -25,9 +25,13 @@
         <ion-list>
             <pokemon-list-item
                     *ngFor="let pokemon of getPokemons(); let i = index"
-                    [num]="i+1" [pokemon]="pokemon"
+                    [pokemon]="pokemon"
                     (clicked)=goToPokemonDetail($event)>
             </pokemon-list-item>
         </ion-list>
+
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </div>
 </ion-content>
