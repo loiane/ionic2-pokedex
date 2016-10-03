@@ -16,8 +16,8 @@ import { PagesModule, APP_PAGES } from '../pages/pages.module';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    APP_PAGES
+    APP_PAGES,
+    MyApp
   ]
 })
 export class AppModule {}
