@@ -25,8 +25,8 @@ export class PokemonList implements OnInit {
     this.pokedexService.getAllPokemon()
       .subscribe(data => {
         this.pokemonList = data;
-        this.loadData();
-        //this.pokedexService.initData();
+        //this.loadData();
+        this.pokedexService.initData();
     });
   }
 
@@ -43,7 +43,7 @@ export class PokemonList implements OnInit {
   getPokemons(){
     var q = this.searchQuery;
     if (q.trim() == '') {
-        return this.pokemons;
+        return this.pokemonList;
     }
     return this.pokemonList.filter((v) => {
         if (v.name.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
@@ -63,9 +63,9 @@ export class PokemonList implements OnInit {
          this.start = 151;
        }
 
-       this.loadData().then(()=>{
+       //this.loadData().then(()=>{
          infiniteScroll.complete();
-       });
+       //});
      } else {
        infiniteScroll.complete();
      }
