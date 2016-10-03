@@ -27,7 +27,7 @@ export class PokedexService {
     requestArray.push(this.getAllSpecies());
     requestArray.push(this.getTypes());
     requestArray.push(this.getMoves());
-    requestArray.push(this.getAbilities());
+    //requestArray.push(this.getAbilities());
     this.doMultipleRequests(requestArray)
       .subscribe(data => null);
   }
