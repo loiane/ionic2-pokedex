@@ -2,12 +2,12 @@
 
 <div class="container">
   <div class="sprites">
-    <img src="{{ pokemon.sprites.front_default }}">
+    <img src="{{ pokemon.sprites.front_default | pokemonSprite }}">
     <div class="desc">Normal</div>
   </div>
 
   <div class="sprites">
-    <img src="{{ pokemon.sprites.front_shiny }}">
+    <img src="{{ pokemon.sprites.front_shiny | pokemonSprite }}">
     <div class="desc">Shiny</div>
   </div>
 </div>
