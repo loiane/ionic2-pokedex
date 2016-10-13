@@ -6,7 +6,7 @@ import { Injectable, Pipe } from '@angular/core';
 @Injectable()
 export class PokemonAvatar {
 
-  private imgBaseUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+  private imgBaseUrl: string = 'assets/images/pokemon/';
 
   transform(value: string, args: any[]) {
     return this.imgBaseUrl + value + '.png';
