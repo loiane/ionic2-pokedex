@@ -8,6 +8,8 @@ import { PokemonGender } from './pokemon-gender';
 import { PokemonImage } from './pokemon-image';
 import { PokeNumber } from './pokeNumber';
 import { SplitCapitalize } from './split-capitalize';
+import { PokemonSpriteNormal } from './pokemon-sprite-normal';
+
 
 export const sharedPipes = [
   Capitalize,
@@ -16,7 +18,8 @@ export const sharedPipes = [
   PokemonGender,
   PokemonImage,
   PokeNumber,
-  SplitCapitalize
+  SplitCapitalize,
+  PokemonSpriteNormal
 ];
 
 @NgModule({
