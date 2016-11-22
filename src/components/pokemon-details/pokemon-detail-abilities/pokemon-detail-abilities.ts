@@ -37,8 +37,8 @@ export class PokemonDetailAbilities {
 
   goToDetail(ability){
     let id: number = this.util.retrieveIdFromUrl(ability.ability.url, 'ability');
-    this.navCtrl.push(AbilityDetailPage, {
-      id: id
-    });
+    //this.navCtrl.push(AbilityDetailPage, {
+    //  id: id
+    //});
   }
 }

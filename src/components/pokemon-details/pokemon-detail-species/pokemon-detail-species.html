@@ -10,7 +10,7 @@
 
 <div class="types">
   <div *ngFor="let type of pokemon.types">
-    <h5 class="label {{ type.type.name | lowercase }}">
+    <h5 class="pokemon-label {{ type.type.name | lowercase }}">
     {{ type.type.name | capitalize }}
     </h5>
   </div>
