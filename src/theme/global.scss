@@ -117,7 +117,7 @@ $pokemon-move-list: (
   )
 );
 
-.label {
+.pokemon-label {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: $label-color;
@@ -133,7 +133,7 @@ $pokemon-move-list: (
 }
 
 .label-fixed-width {
-  @extend .label;
+  @extend .pokemon-label;
   width: 70px;
 }
 
