@@ -20,4 +20,4 @@ $ npm install
 $ ionic serve
 ```
 
-Additionally, you can also download Ionic View app from Goggle Play or Apple Store and enter id `1553841a` to execute this app in your mobile phone or tablet.
+Additionally, you can also download Ionic View app from Google Play or Apple Store and enter id `1553841a` to execute this app in your mobile phone or tablet.
