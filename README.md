@@ -1,5 +1,7 @@
 # ionic2-pokedex
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/loiane/ionic2-pokedex.svg)](https://greenkeeper.io/)
+
 Pokédex sample hybrid mobile app developed with Ionic 2, Angular 2 and Apache Cordova. Using Pokéapi v2 as source for data and sprites.
 
 ### Functionalities
