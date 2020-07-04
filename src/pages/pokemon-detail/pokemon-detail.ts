@@ -4,9 +4,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PokedexService } from '../../providers/pokedex-service';
 
 @Component({
+  selector: "pokemon-detail",
   templateUrl: 'pokemon-detail.html'
 })
-export class PokemonDetail implements OnInit {
+export class PokemonDetail {
 
   private pokemon: any = {};
 

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { StatusBar } from '@ionic-native/status-bar';
 
 import { AboutPage } from '../pages/about/about';
 import { PokemonList } from '../pages/pokemon-list/pokemon-list';
@@ -36,11 +36,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(platform: Platform) {
+  constructor(
+    platform: Platform,
+    statusBar: StatusBar) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      statusBar.styleDefault();
     });
 
     this.pages = [
